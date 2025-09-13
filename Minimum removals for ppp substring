@@ -1,0 +1,86 @@
+Q1.
+Minimum Removals to Eliminate 'ppp' Substrings
+
+Alice is working on a system that processes text inputs from users. One of the requirements is that the text must not contain the substring "ppp" - three consecutive 'p' characters. If this substring appears, the text is rejected.
+
+To make the input text acceptable, Alice needs to remove characters in such a way the substring "ppp" does not exist.
+
+Your task is to help Alice find and return an integer value representing the minimum number of characters that need to be removed from the text to meet this requirement.
+
+
+
+Note
+
+• The string only contains lowercase alphabetic characters.
+
+• You can delete characters in random positions (not necessarily consecutive).
+
+
+Input Format
+
+Input1: A string S, representing the text inputs from users.
+
+
+
+Output Format
+
+Return an integer value representing the minimum number of characters that need to be removed from the text to meet the above requirement.
+
+
+
+Example 1
+
+Sample Input 1
+
+pppiii
+
+
+
+Sample Output 1
+
+1
+
+
+
+Explanation
+
+Here the string S I “pppiii”. Since the string contains three consecutive p’s or the substring ‘ppp’. So if the first character is removed from the string, then it becomes ‘ppiii’. Now after removing 1 character, no such substring is there in the input text, so it will be accepted. Hence, 1 is returned as the output.
+
+
+
+Example 2
+
+Sample Input 2
+
+pppp
+
+
+
+Sample Output 2
+
+2
+
+
+
+Explanation
+
+Here the string S is “pppp”. Since the string contains three consecutive p’s or the substring ‘ppp’, if we remove the first character from the string then it becomes ‘ppp’. Again it contains substring ‘ppp’, so again the first character is removed. Now the string becomes ‘pp’. After removing 2 characters from string, no such substring is there in the input text, so it will be accepted. Hence 2 is returned as the output.
+
+Solution:
+
+import java.util.*;
+class Main{
+  public static void main(String[] args){
+    Scanner sc = new Scanner(System.in);
+    String str = sc.next();
+  
+    int count = 0; 
+    for(int i=0;i<=str.length()-3;i++){
+
+      String subs = str.substring(i,i+3);
+        if(subs.equals("ppp"))
+          count++;
+    }
+    System.out.print(count);
+  }
+}
