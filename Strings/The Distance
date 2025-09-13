@@ -1,0 +1,88 @@
+Jim has a password which is represented by a string S containing English alphabets [a-z] in lower case and numbers [0-9]. The distance between two characters can be calculated as the difference between their respective indices. Your task is to find and @gmail.com return an integer value representing the maximum distance between two non similar characters within the given password S.
+
+
+
+Note
+
+The distance between two alphabets which are adjacent to each other is 1.
+
+
+
+Input Format
+
+Input1: A string S containing English alphabets [a-z] in lower case and numbers [0- 9]
+
+
+
+Output Format
+
+Return an integer value representing the maximum distance between two non- similar characters within the given password S.
+
+
+
+Example 1
+
+Sample Input 1
+
+abc10a
+
+
+
+Sample Output 1
+
+4
+
+
+
+Explanation
+
+The input string S has many characters, below two non-similar elements. man are a few of the max distances among
+
+S[1] to S[5]: a and 0 in a abc10a, with distance of 4
+S[2] to S[6]: b and a in abc10a, with distance of 4.
+For the remaining combinations the distance is less than 4. So the maximum distance between two non-similar elements is 4, therefore 4 is returned as the output.
+
+
+
+Example 2
+
+Sample Input 2
+
+bbbb
+
+
+
+Sample Output 2
+
+0
+
+
+
+Explanation
+
+Here the string S contains all similar elements, there are no two elements to compare, hence the maximum distance between two non-similar elements is 0. Therefore, 0 is returned as the output
+
+Solution:
+
+import java.util.*;
+class Main{
+   public static void main(String[] args){
+     Scanner sc = new Scanner(System.in);
+     String str = sc.next();
+     int max_dis = 0;
+     for(int i=str.length()-1; i>=0;i--){
+       if(str.charAt(i)!= str.charAt(0)){
+         max_dis = Math.max(max_dis,i-0);
+         break;
+       }
+     }
+     for(int i=0; i<str.length();i++)
+       {
+         if(str.charAt(i) != str.charAt(str.length()-1)){
+           max_dis = Math.max(max_dis,(str.length()-1)-i);
+           break;
+         }
+       }
+     System.out.print(max_dis);
+   }  
+}
